@@ -3,7 +3,7 @@
 Small repository containing a small exercise specifications for creating a new CRUD REST API project.
 
 - [Overview](#overview)
-  - [Recommended research](#recommended_research)
+  - [Recommended research](#recommended-research)
   - [Recommended prerequisites](#recommended-prerequisites)
 - [Base Specification](#base-specification)
   - [Accounts](#accounts)
@@ -51,14 +51,14 @@ Here are some baseline recommendations:
   - JetBrains line of community products (the ones that are free).
   - If you want to be a 10x giga-chad developer, use Neovim or Emacs (not recommended for beginners). 
 - Use Docker containers to easily setup your database instance.
-  - Do look into data persistency. There are some docker containers that will remove your data once you turn off the containers.
+  - Do look into data persistency. There are some docker containers that will remove your data once you delete or restart your containers.
   - Recommend looking into relational databases like SQLite and Postgres.
 - Utilise existing and trusted open source libraries for:
   - Any HTTP server creation for your API endpoints.
   - Any connections to a database of your choice.
-- For API utilities, you can use Postman, Insomnia, Hoppscotch, Milkman or even some plugins that come built into IDE
+- For API utilities, you can use Postman, Insomnia, Hoppscotch, Milkman or even some plugins that come built into IDE.
 
-Majority of the recommendation will require some research just any of the above information is out of date.
+Majority of the recommendations will require some research just in case any of the above information is out of date.
 
 ## Base Specification
 
@@ -95,9 +95,8 @@ The ability to fetch user information.
 Example Request:
 ```
 GET http://localhost:8443/account/1
-{
-  // no body
-}
+
+// no body
 ```
 
 Example Response:
@@ -135,14 +134,13 @@ HTTP Code: OK 200
 
 #### Delete User
 
-The ability to delete a user from the banks database.
+The ability to delete a user from the database.
 
 Example Request:
 ```
 DELETE http://localhost:8443/account/1
-{
-  // no body
-}
+
+// no body
 ```
 
 Example Response:
@@ -156,9 +154,9 @@ HTTP Code: OK 200
 #### Questions and Extras
 
 - What is the best way to store users information in a database?
-  - Do you just use one table or do you separate the information out to separate tables and why?
+  - Do you just use one table or do you separate the information out to multiple tables and why?
 - How do you generate a new account ID?
-  - Do you use the primary key of a database?
+  - Do you use the primary key of a database table?
   - Do you randomly generate a number when the user is created?
 - For each endpoint, are there any validation you want to do on the incoming payloads?
   - e.g. Are all the expected fields available? If not, maybe send back an appropriate error response?
@@ -199,10 +197,12 @@ HTTP Code: OK 200
   - e.g. If so, what type of error responses do you want to show?
 - Can the response message be expanded with useful information?
   - e.g. Could you inform the user of their latest credit card allowance and limits?
+- How can you expand the Accounts Fetch API to show the current account debt?
+- Will you allow the user to be deleted before they have settled all their debts?
 
 ### Settlements
 
-The ability for a user to settle their credit card debt.
+The ability for a user to settle all or part of their credit card debt.
 
 Example Request:
 ```
@@ -229,13 +229,13 @@ HTTP Code: OK 200
 
 ## Extra CRUD_bank features
 
-Beyond the basic CRUD operations and features that would make an application a credit card themed, you can also include the following features for extra practice.
+Beyond the basic CRUD operations and features that would make an application be credit card bank themed, you can also include the following features for extra practice.
 
 ### Interest
 
 Expand your applications to generate interest on all accounts so that CRUD_bank can make some money!
 
-Start up a reoccurring scheduler (HINT: alongside or at the same time as you start up your HTTP server) to go though all accounts at some interval to add interest all account debt.
+Start up a reoccurring scheduler (HINT: alongside or at the same time as you start up your HTTP server) to go though all accounts and add interest all account debt.
 
 - How will you iterate though all your accounts?
 - How exactly are you going to work out who is in debt and how to add interest?
@@ -243,25 +243,28 @@ Start up a reoccurring scheduler (HINT: alongside or at the same time as you sta
 
 ### User Credentials
 
-Expand Account APIs ability to store and use user passwords
+Expand Account APIs ability to store and use user passwords.
 
 - Set a password when an account is being created.
-  - Is there a password criteria that needs to be validated? (Minimum 6 characters, must contain a letter, etc..)
+  - Is there a password criteria that needs to be validated?
+    - e.g. Minimum 6 characters, must contain a letter, etc..
   - How are you going to store the account passwords?
-  - (You can do clear text, but in the real world, a good practice is to encrypt your passwords when storing them into a database. See Salt and Hash)
-- Expand the PUT call to have the ability to update the password.
-- Expand Account Update, Account Delete, Purchases and Settlements to require the account password.
-
+    - (You can do clear text, but in the real world, a good practice is to encrypt your passwords when storing them into a database. See Salt and Hash)
+- Expand the 'PUT' call to have the ability to update the password.
+- Expand Account Update, Account Delete, Purchases and Settlements to require the account password to be part of the payload.
 
 ### API Authentication
 
 Expand all of the APIs to utilise some form of authentication to validate the caller for an API.
 
-This is different from an account password. The account password ensures that the account user calling the API is the right user, but the API authentication ensures that the utility , tool or another API that is calling your application is allowed to call your APIs.
+This is different from an account password.
+
+The account password ensures that the account user calling the API is the right user, but the API authentication ensures that the utility tool or another API that is calling your application is allowed to call your APIs at all.
 
 - Will you use any existing libraries to do this?
-- Have you considered JWT for example?
-- If you wish to do it by yourself, how are you going to generate a authorisation token?
+  - Maybe considered JWT for example?
+- If you wish to do it by yourself, how are you going to generate an authorisation token?
+  - Will the token be a simple UUID?
   - What new endpoints do you have to create to generate new tokens?
   - Will you need to setup anything else before hand to ensure only certain callers are allowed to generate tokens?
   - How are you going to store active tokens?
@@ -317,7 +320,7 @@ HTTP Code: OK 200
 }
 ```
 
-- How will you have to alter your overall application in order to have ability to report on account data?
-- Are there any other useful metrics you can pull out as part of the account reporting?
-- Could you find a way to report on all accounts and find totals from the perspective of the bank?
+- How will you have to alter your overall application in order to have the ability to report on account data?
+- Are there any other useful metrics or information you can pull out our your application database as part of the account reporting?
+- Could you find a way to report on all accounts and find totals from the perspective of CRUD_bank?
   - e.g. total amount of all debt, interest earned and so on.
