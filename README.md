@@ -1,4 +1,4 @@
-# exerCRUD
+# CRUD_bank - REST CRUD API Exercise
 
 Small repository containing a small exercise specifications for creating a new CRUD REST API project.
 
