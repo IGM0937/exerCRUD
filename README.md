@@ -3,6 +3,7 @@
 Small repository containing a small exercise specifications for creating a new CRUD REST API project.
 
 - [Overview](#overview)
+  - [Recommended research](#recommended_research)
   - [Recommended prerequisites](#recommended-prerequisites)
 - [Base Specification](#base-specification)
   - [Accounts](#accounts)
@@ -19,6 +20,19 @@ Small repository containing a small exercise specifications for creating a new C
 The example specification looks to create a CRUD REST API project for a example credit card provider, CRUD_bank.
 
 The following specification is used for new comers to the world of Software Engineering 🌍 🖥️
+
+### Recommended research
+
+The following questions are not necessary to answer before starting, but may help you with development.
+
+Most of these can be looked at as and when needed.
+
+- What is REST API?
+- What is JSON formatting and what is it used for?
+- What is CRUD?
+- What are the available HTTP codes in a typical REST API?
+- What is a relational database?
+- What is Docker?
 
 ### Recommended prerequisites 
 
@@ -44,14 +58,7 @@ Here are some baseline recommendations:
   - Any connections to a database of your choice.
 - For API utilities, you can use Postman, Insomnia, Hoppscotch, Milkman or even some plugins that come built into IDE
 
-Majority of recommendation will require some research just any of the above information is out of date.
-
-Recommended research:
-
-- What is REST API?
-- What is JSON formatting and what is it used for?
-- What is CRUD?
-- What are the available HTTP codes in a typical REST API?
+Majority of the recommendation will require some research just any of the above information is out of date.
 
 ## Base Specification
 
